@@ -36,7 +36,7 @@ export class CrudPage {
         this.backandService.create('user', { name: this.name, description: this.description }).subscribe(
                 data => {
                     // add to beginning of array
-                    this.items.unshift({ id: null, name: this.name, description: this.description });
+                    this.items.unshift({ /*id: null,*/ name: this.name, description: this.description });
                     console.log(this.items);
                     this.name = '';
                     this.description = '';

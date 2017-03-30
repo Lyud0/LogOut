@@ -18,9 +18,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       backandService.setIsMobile(platform.is('mobile'));
-      backandService.setAppName('lyu1');
-      backandService.setSignUpToken('58d6f3bf-32bc-42c7-853f-0b7f8af003a4');
-      backandService.setAnonymousToken('c296e41b-f9e1-4c75-8e40-a1668e28c5af');
+      backandService.setAppName('todoantony');
+      backandService.setSignUpToken('5a07abea-7330-4667-a238-72a5614b0565');
+      backandService.setAnonymousToken('2250c876-290d-4d56-91bd-5950c7e6d5db');
     });
   }
 }

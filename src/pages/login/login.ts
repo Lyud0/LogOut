@@ -2,13 +2,21 @@ import {Component} from '@angular/core';
 // import {bootstrap} from '@angular/platform-browser-dynamic';
 import 'rxjs/Rx'
 import {BackandService} from '../../providers/backandService'
+import { NavController } from 'ionic-angular';
+import Rx from "rxjs/Rx";
+
+
 
 @Component({
     templateUrl: 'login.html',
     selector: 'page-login',
 })
 export class LoginPage {
-    
+    clickStream = Rx.Observable.fromEvent(document, "click");    
+    typeStream = Rx.Observable.fromEvent(document, 'keyup');
+    keyActions = Rx.Observable .merge(this.clickStream,this.typeStream);
+
+timeoutDouble;
     username:string = 'test@angular2.com';
     password:string = 'angular2';
     auth_type:string = "N/A";
@@ -26,6 +34,15 @@ export class LoginPage {
         this.auth_type = backandService.getAuthType();
         this.auth_status = backandService.getAuthStatus();
         this.loggedInUser = backandService.getUsername();
+        this.timeoutDouble = this.keyActions               
+             .map(() => Rx.Observable.timer(5000))
+             .switch()
+             .subscribe(() => {
+                       this.username ='';
+                       this.password ='';
+                       this.loggedInUser ='';
+                       this.auth_status ='';
+                  })  
     }
 
 
